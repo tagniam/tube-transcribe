@@ -13,12 +13,21 @@ enum PlayerStates {
   VIDEO_CUED = 5
 };
 
+enum ErrorStates {
+  INVALID_PARAM_ERROR = 2,
+  HTML5_ERROR = 5,
+  VIDEO_NOT_FOUND_ERROR = 100,
+  EMBEDDED_NOT_ALLOWED_ERROR = 101,
+  VIDEO_NOT_FOUND_ALT_ERROR = 150
+};
+
 @Injectable()
 export class PlayerService {
   private player: YouTubePlayer;
   private videoId: string;
   private loopId;
   private state: Subject<number> = new Subject<number>();
+  private error: Subject<number> = new Subject<number>();
 
   /* Default player vars for the video */
   private static readonly playerVars = {
@@ -47,6 +56,11 @@ export class PlayerService {
     this.player.on('stateChange', (event) => {
       this.state.next(event.data);
     });
+
+    // Update the error state on change
+    this.player.on('error', (event) => {
+      this.error.next(event.data);
+    });
   }
 
   /**
@@ -54,6 +68,13 @@ export class PlayerService {
    */
   getState(): Observable<number> {
     return this.state.asObservable();
+  }
+
+  /**
+   * Returns an Observable specifying any errors that have occurred.
+   */
+  getError(): Observable<number> {
+    return this.error.asObservable();
   }
 
   /**

@@ -90,4 +90,11 @@ export class PlayerService {
     return this.player.getCurrentTime();
   }
 
+  /**
+   * Returns the duration of the video in seconds.
+   */
+  getDuration(): Promise<number> {
+    return this.player.getDuration();
+  }
+
 }

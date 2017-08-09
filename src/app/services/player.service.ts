@@ -75,4 +75,12 @@ export class PlayerService {
     return this.player.seekTo(seconds, true);
   }
 
+  /**
+   * Sets the volume of the video.
+   * @param volume level of volume, between 0 and 100
+   */
+  setVolume(volume: number): Promise<void> {
+    return this.player.setVolume(volume);
+  }
+
 }

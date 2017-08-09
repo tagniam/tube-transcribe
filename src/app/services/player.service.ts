@@ -9,7 +9,7 @@ export class PlayerService {
   private loopId;
 
   /* Default player vars for the video */
-  private static playerVars = {
+  private static readonly playerVars = {
     'autoplay': 1,
     'controls': 0,
     'autohide': 1,

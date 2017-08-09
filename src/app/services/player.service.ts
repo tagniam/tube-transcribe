@@ -6,6 +6,7 @@ import * as YouTubePlayer from 'youtube-player';
 export class PlayerService {
   private player: YouTubePlayer;
   private videoId: string;
+  private loopId;
 
   /* Default player vars for the video */
   private static playerVars = {
@@ -16,6 +17,8 @@ export class PlayerService {
     'rel': 0,
     'loop': 1
   };
+
+  private static readonly CHECK_LOOP_MS = 10;
 
   constructor() { }
 
@@ -110,6 +113,34 @@ export class PlayerService {
    */
   setPlaybackRate(suggestedRate: number): Promise<void> {
     return this.player.setPlaybackRate(suggestedRate);
+  }
+
+  /**
+   * Starts a loop for the video.
+   * @param startSeconds starting point of the loop in seconds
+   * @param endSeconds ending point of the loop in seconds
+   */
+  startLoop(startSeconds: number, endSeconds: number): Promise<void> {
+    // Seek to startSeconds when endSeconds is reached
+    return this.seekTo(startSeconds).then(() => {
+      // Keep track of id to clear loop later
+      this.loopId = setInterval(() => {
+        this.getCurrentTime().then(currentTime => {
+          if (currentTime >= endSeconds) {
+            this.seekTo(startSeconds);
+          }
+        }); 
+      }, PlayerService.CHECK_LOOP_MS);
+    });
+  }
+
+  /**
+   * Ends any loop that was started with startLoop().
+   */
+  endLoop(): void {
+    if (this.loopId) {
+      clearInterval(this.loopId);
+    }
   }
 
 }

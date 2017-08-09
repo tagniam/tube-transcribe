@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Subject } from 'rxjs/Subject';
 
 import * as YouTubePlayer from 'youtube-player';
 
@@ -16,6 +18,7 @@ export class PlayerService {
   private player: YouTubePlayer;
   private videoId: string;
   private loopId;
+  private state: Subject<number> = new Subject<number>();
 
   /* Default player vars for the video */
   private static readonly playerVars = {
@@ -38,8 +41,19 @@ export class PlayerService {
   setup(divId: string): void {
     this.player = YouTubePlayer(divId, {
       playerVars: PlayerService.playerVars
-      // TODO implement events
     });
+
+    // Update the current state on change
+    this.player.on('stateChange', (event) => {
+      this.state.next(event.data);
+    });
+  }
+
+  /**
+   * Returns an Observable specifying the state of the player.
+   */
+  getState(): Observable<number> {
+    return this.state.asObservable();
   }
 
   /**

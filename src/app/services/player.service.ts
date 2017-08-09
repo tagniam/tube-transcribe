@@ -83,4 +83,11 @@ export class PlayerService {
     return this.player.setVolume(volume);
   }
 
+  /**
+   * Returns the elapsed time in seconds since the video started playing.
+   */
+  getCurrentTime(): Promise<number> {
+    return this.player.getCurrentTime();
+  }
+
 }

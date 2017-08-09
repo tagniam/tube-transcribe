@@ -66,4 +66,13 @@ export class PlayerService {
     return this.player.stopVideo();
   }
 
+  /**
+   * Seeks to a specified time in the video.
+   * @param seconds time to which player should advance
+   */
+  seekTo(seconds: number): Promise<void> {
+    // Allows seek ahead
+    return this.player.seekTo(seconds, true);
+  }
+
 }

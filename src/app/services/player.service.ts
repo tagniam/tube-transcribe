@@ -97,4 +97,19 @@ export class PlayerService {
     return this.player.getDuration();
   }
 
+  /**
+   * Returns the set of playback rates in which the current video is available.
+   */
+  getAvailablePlaybackRates(): Promise<Array<number>> {
+    return this.player.getAvailablePlaybackRates();
+  }
+
+  /**
+   * Sets the suggested playback rate for the current video.
+   * @param suggestedRate playback rate , should be in getAvailablePlaybackRates
+   */
+  setPlaybackRate(suggestedRate: number): Promise<void> {
+    return this.player.setPlaybackRate(suggestedRate);
+  }
+
 }

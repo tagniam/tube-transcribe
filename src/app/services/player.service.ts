@@ -2,6 +2,15 @@ import { Injectable } from '@angular/core';
 
 import * as YouTubePlayer from 'youtube-player';
 
+enum PlayerStates {
+  UNSTARTED = -1,
+  ENDED = 0,
+  PLAYING = 1,
+  PAUSED = 2,
+  BUFFERING = 3,
+  VIDEO_CUED = 5
+};
+
 @Injectable()
 export class PlayerService {
   private player: YouTubePlayer;
@@ -17,7 +26,7 @@ export class PlayerService {
     'rel': 0,
     'loop': 1
   };
-
+  
   private static readonly CHECK_LOOP_MS = 10;
 
   constructor() { }
@@ -60,6 +69,19 @@ export class PlayerService {
    */
   pauseVideo(): Promise<void> {
     return this.player.pauseVideo();
+  }
+
+  /**
+   * Plays the video if it is paused, pauses video if video is playing.
+   */
+  playPauseVideo(): Promise<void> {
+    this.player.getPlayerState().then(state => {
+      if (state == PlayerStates.PLAYING || 
+          state == PlayerStates.BUFFERING) {
+        return this.pauseVideo();
+      }
+    });
+    return this.playVideo();
   }
 
   /**

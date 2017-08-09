@@ -66,14 +66,14 @@ export class PlayerService {
   /**
    * Returns an Observable specifying the state of the player.
    */
-  getState(): Observable<number> {
+  getPlayerState(): Observable<number> {
     return this.state.asObservable();
   }
 
   /**
    * Returns an Observable specifying any errors that have occurred.
    */
-  getError(): Observable<number> {
+  getErrorState(): Observable<number> {
     return this.error.asObservable();
   }
 

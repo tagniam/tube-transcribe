@@ -45,4 +45,25 @@ export class PlayerService {
     });
   } 
 
+  /**
+   * Plays the video.
+   */
+  playVideo(): Promise<void> {
+    return this.player.playVideo();
+  }
+
+  /**
+   * Pauses the video.
+   */
+  pauseVideo(): Promise<void> {
+    return this.player.pauseVideo();
+  }
+
+  /**
+   * Stops the video.
+   */
+  stopVideo(): Promise<void> {
+    return this.player.stopVideo();
+  }
+
 }

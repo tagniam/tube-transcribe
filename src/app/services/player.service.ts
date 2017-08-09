@@ -5,6 +5,7 @@ import * as YouTubePlayer from 'youtube-player';
 @Injectable()
 export class PlayerService {
   private player: YouTubePlayer;
+  private videoId: string;
 
   constructor() { }
 
@@ -15,5 +16,10 @@ export class PlayerService {
   setup(divId: string) {
     this.player = YouTubePlayer(divId);
   }
+
+  loadVideoById(videoId: string) {
+    this.videoId = videoId;
+    this.player.loadVideoById(videoId);
+  } 
 
 }

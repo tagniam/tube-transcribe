@@ -7,6 +7,16 @@ export class PlayerService {
   private player: YouTubePlayer;
   private videoId: string;
 
+  /* Default player vars for the video */
+  private static playerVars = {
+    'autoplay': 1,
+    'controls': 0,
+    'autohide': 1,
+    'showinfo': 0,
+    'rel': 0,
+    'loop': 1
+  };
+
   constructor() { }
 
   /**
@@ -14,7 +24,10 @@ export class PlayerService {
    * @param divId HTML div id reference
    */
   setup(divId: string): void {
-    this.player = YouTubePlayer(divId);
+    this.player = YouTubePlayer(divId, {
+      playerVars: PlayerService.playerVars
+      // TODO implement events
+    });
   }
 
   /**

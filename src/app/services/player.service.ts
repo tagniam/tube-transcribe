@@ -65,8 +65,8 @@ export class PlayerService {
   /**
    * Loads a YouTube video with the given id.
    * @param videoId YouTube video id
-   * @param startSeconds starting point of the video in seconds
-   * @param suggestedQuality video playback quality; see YouTube iFrame API
+   * @param startSeconds optional; starting point of the video in seconds
+   * @param suggestedQuality optional; video playback quality; see YouTube iFrame API
    */
   loadVideoById(videoId: string, startSeconds?: number, suggestedQuality?: string): void {
     this.videoId = videoId;

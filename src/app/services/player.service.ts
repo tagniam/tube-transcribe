@@ -3,23 +3,8 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/Subject';
 
 import * as YouTubePlayer from 'youtube-player';
-
-enum PlayerStates {
-  UNSTARTED = -1,
-  ENDED = 0,
-  PLAYING = 1,
-  PAUSED = 2,
-  BUFFERING = 3,
-  VIDEO_CUED = 5
-};
-
-enum ErrorStates {
-  INVALID_PARAM_ERROR = 2,
-  HTML5_ERROR = 5,
-  VIDEO_NOT_FOUND_ERROR = 100,
-  EMBEDDED_NOT_ALLOWED_ERROR = 101,
-  VIDEO_NOT_FOUND_ALT_ERROR = 150
-};
+import { PlayerStates } from '../enum/player-states.enum';
+import { ErrorStates } from '../enum/error-states.enum';
 
 @Injectable()
 export class PlayerService {

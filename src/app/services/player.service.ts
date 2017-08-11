@@ -29,11 +29,19 @@ export class PlayerService {
   constructor() { }
 
   /**
-   * Injects a YouTube iframe into the div with the given id.
+   * Injects a YouTube iframe into the div with the given id and video.
    * @param divId HTML div id reference
+   * @param videoId YouTube video id
+   * @param startSeconds optional; starting point of the video in seconds
+   * @param suggestedQuality optional; video playback quality; see YouTube iFrame API
    */
-  setup(divId: string): void {
+  setup(divId: string, videoId: string, startSeconds?: number, suggestedQuality?: string): Promise<void> {
+    // Save video for later
+    this.videoId = videoId;
     this.player = YouTubePlayer(divId, {
+      videoId: videoId,
+      startSeconds: startSeconds,
+      suggestedQuality: suggestedQuality,
       playerVars: PlayerService.playerVars
     });
 
@@ -45,6 +53,13 @@ export class PlayerService {
     // Update the error state on change
     this.player.on('error', (event) => {
       this.error.next(event.data);
+    });
+
+    // Fulfill when player is ready
+    return new Promise<void>((resolve) => {
+      this.player.on('ready', () => {
+        resolve();
+      });
     });
   }
 

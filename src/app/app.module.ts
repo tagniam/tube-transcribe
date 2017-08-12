@@ -6,11 +6,13 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { PlayerService } from './services/player.service';
 import { TrackMouseDirective } from './directives/track-mouse.directive';
+import { TimelineComponent } from './components/timeline/timeline.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrackMouseDirective
+    TrackMouseDirective,
+    TimelineComponent
   ],
   imports: [
     BrowserModule,

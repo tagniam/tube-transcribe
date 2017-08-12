@@ -5,63 +5,61 @@ import { Directive, HostListener, EventEmitter, Output } from '@angular/core';
 })
 
 /**
- * Directive to track where the mouse is while it is dragging.
- * Also tracks when a click is made, without confusing it with a drag.
+ * Directive to track where the mouse is while it is selecting.
+ * Also tracks when a click is made, without confusing it with a selection.
  */
 export class TrackMouseDirective {
-  private isMouseDown: boolean;
-  private isDragging: boolean;
-  private initPosMouseDown: number;
+  private isMouseDown: boolean = false;
+  private isSelecting: boolean = false;
+  private initialMouseDownX: number = 0;
 
   /* Events intended to be received by the timeline. */
-  @Output() startDrag: EventEmitter<Event> = new EventEmitter();
-  @Output() endDrag: EventEmitter<Event> = new EventEmitter();
-  @Output() dragging: EventEmitter<Event> = new EventEmitter();
+  @Output() selectionStart: EventEmitter<Event> = new EventEmitter();
+  @Output() selectionEnd: EventEmitter<Event> = new EventEmitter();
+  @Output() selecting: EventEmitter<Event> = new EventEmitter();
   @Output() clicked: EventEmitter<Event> = new EventEmitter();
   @Output() dblclicked: EventEmitter<Event> = new EventEmitter();
 
-  constructor() {
-    this.isMouseDown = false;
-    this.isDragging = false;
-    this.initPosMouseDown = 0; 
-  }
+  constructor() { }
 
-  @HostListener('mousedown', ['$event']) onMouseDown(event): void {
+  @HostListener('mousedown', ['$event']) onMouseDown(event) {
     // Starts looking for drag once mouse is down
-    this.initPosMouseDown = event.layerX;
+    this.initialMouseDownX = event.layerX;
     this.isMouseDown = true;
   }
-  
-  @HostListener('mouseup', ['$event']) onMouseUp(event): void {
-    // Normal click occurs
-    this.isMouseDown = false;
-    if (event.layerX == this.initPosMouseDown) {
-      this.clicked.emit(event);
+
+  @HostListener('mousemove', ['$event']) onMouseMove(event) {
+    // Output event to parent if already selecting
+    if (this.isSelecting) {
+      this.selecting.emit(event);
     }
-    else {
-      // Stops dragging
-      if (this.isDragging) {
-        this.endDrag.emit(event);
-      }
-      this.isDragging = false;
+
+    // Start selecting if mouse btn is down and moving mouse
+    else if (this.isMouseDown && event.layerX != this.initialMouseDownX) {
+      this.isSelecting = true; 
+      this.selectionStart.emit(event);
     }
   }
+  
+  @HostListener('mouseup', ['$event']) onMouseUp(event) {
+    this.isMouseDown = false;
 
-  @HostListener('mousemove', ['$event']) onMouseMove(event): void {
-    // Output event to parent if already dragging
-    if (this.isDragging) {
-      this.dragging.emit(event);
+    // Normal click occurs
+    if (event.layerX == this.initialMouseDownX) {
+      this.clicked.emit(event);
     }
 
-    // Start dragging if mouse btn is down and moving mouse
-    else if (this.isMouseDown && event.layerX != this.initPosMouseDown) {
-      this.isDragging = true; 
-      this.startDrag.emit(event);
+    // Selection occurs
+    else {
+      if (this.isSelecting) {
+        this.selectionEnd.emit(event);
+      }
+      this.isSelecting = false;
     }
   }
 
   @HostListener('mouseleave', ['$event']) onMouseOff(event) {
-    // Stop dragging once mouse leaves boundary
+    // Stop selecting once mouse leaves boundary
     this.onMouseUp(event);
   }
 

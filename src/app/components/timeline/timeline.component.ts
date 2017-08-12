@@ -10,6 +10,7 @@ export class TimelineComponent implements OnInit {
   /* On player initialization, these values should be set. */
   @Input() playHeadPos: number = 0;
   @Input() width: number = screen.width;
+  @Input() height: number = screen.height/10;
 
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<Event> = new EventEmitter();

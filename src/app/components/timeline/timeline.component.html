@@ -1,7 +1,7 @@
 <div id="timeline-wrapper">
   <svg id="timeline-box"
       [attr.width]="width" 
-      height="100%" 
+      [attr.height]="height" 
       trackMouse (clicked)="handleClick($event)"
                  (dblclicked)="handleDoubleClick($event)"
                  (selectionStart)="handleSelectionStart($event)"

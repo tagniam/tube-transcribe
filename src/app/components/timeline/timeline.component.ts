@@ -8,8 +8,8 @@ import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@a
 
 export class TimelineComponent implements OnInit {
   /* On player initialization, these values should be set. */
-  @Input() playHeadPos: number;
-  @Input() width: number;
+  @Input() playHeadPos: number = 0;
+  @Input() width: number = screen.width;
 
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<Event> = new EventEmitter();
@@ -41,7 +41,7 @@ export class TimelineComponent implements OnInit {
    */
   handleSelecting(event) {
     this.selectionEndPos = event.layerX;
-    this.playHeadPos= event.layerX;
+    this.playHeadPos = event.layerX;
     this.changePlayHeadPos.emit(event);
   }
 
@@ -51,6 +51,7 @@ export class TimelineComponent implements OnInit {
    */
   handleSelectionStart(event) {
     this.selectionStartPos = event.layerX;
+    this.selectionEndPos = event.layerX;
     this.isSelecting = true;
   }
 

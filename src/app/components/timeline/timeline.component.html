@@ -2,20 +2,23 @@
   <svg id="timeline-box"
       [attr.width]="width" 
       height="100%" 
-      trackMouse 
-      (clicked)="handleClick($event)"
-      (dblclicked)="handleDoubleClick($event)"
-      (selectionStart)="handleSelectionStart($event)"
-      (selecting)="handleSelecting($event)"
-      (selectionEnd)="handleSelectionEnd($event)" >
+      trackMouse (clicked)="handleClick($event)"
+                 (dblclicked)="handleDoubleClick($event)"
+                 (selectionStart)="handleSelectionStart($event)"
+                 (selecting)="handleSelecting($event)"
+                 (selectionEnd)="handleSelectionEnd($event)" >
 
     <svg:rect id="timeline-bg" x="0" y="0" height="100%" width="100%" />
 
     <ng-template [ngIf]="isSelecting">
-      <!--<svg:g dragbox [posDragStart]="selectionStartPos" [posDragEnd]="selectionEndPos"/>-->
+      <svg:g selection-box [selectionStartPos]="selectionStartPos" 
+                           [selectionEndPos]="selectionEndPos"/>
     </ng-template>
 
-    <svg:line id="playhead" [attr.x1]="playHeadPos" y1="0" [attr.x2]="playHeadPos" y2="100%" />
-
+    <svg:line id="playhead" 
+              [attr.x1]="playHeadPos" 
+              y1="0" 
+              [attr.x2]="playHeadPos" 
+              y2="100%" />
   </svg>
 </div>

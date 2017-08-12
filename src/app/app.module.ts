@@ -5,10 +5,12 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { PlayerService } from './services/player.service';
+import { TrackMouseDirective } from './directives/track-mouse.directive';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TrackMouseDirective
   ],
   imports: [
     BrowserModule,

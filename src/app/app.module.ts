@@ -8,13 +8,15 @@ import { PlayerService } from './services/player.service';
 import { TrackMouseDirective } from './directives/track-mouse.directive';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { SelectionBoxComponent } from './components/selection-box/selection-box.component';
+import { TimeDisplayComponent } from './components/time-display/time-display.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TrackMouseDirective,
     TimelineComponent,
-    SelectionBoxComponent
+    SelectionBoxComponent,
+    TimeDisplayComponent
   ],
   imports: [
     BrowserModule,

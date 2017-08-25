@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-media-controls',
+  selector: 'media-controls',
   templateUrl: './media-controls.component.html',
   styleUrls: ['./media-controls.component.css']
 })

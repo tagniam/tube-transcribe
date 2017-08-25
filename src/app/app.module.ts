@@ -9,6 +9,7 @@ import { TrackMouseDirective } from './directives/track-mouse.directive';
 import { TimelineComponent } from './components/timeline/timeline.component';
 import { SelectionBoxComponent } from './components/selection-box/selection-box.component';
 import { TimeDisplayComponent } from './components/time-display/time-display.component';
+import { MediaControlsComponent } from './components/media-controls/media-controls.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { TimeDisplayComponent } from './components/time-display/time-display.com
     TrackMouseDirective,
     TimelineComponent,
     SelectionBoxComponent,
-    TimeDisplayComponent
+    TimeDisplayComponent,
+    MediaControlsComponent
   ],
   imports: [
     BrowserModule,

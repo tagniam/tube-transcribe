@@ -1,3 +1,16 @@
-<p>
-  media-controls works!
-</p>
+<div id="media-controls-wrapper">
+
+  <button id="backwards">Backwards</button>
+  
+  <button id="playPause" (click)="togglePlayPause()">
+    <div *ngIf="playing">
+      Pause
+    </div>
+    <div *ngIf="!playing">
+      Play
+    </div>
+  </button>
+
+  <button id="forwards">Forwards</button>
+
+</div>

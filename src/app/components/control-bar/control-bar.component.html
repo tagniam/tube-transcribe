@@ -1,4 +1,5 @@
-<timeline [playHeadPos]="playHeadPos"></timeline>
+<timeline [playHeadPos]="playHeadPos"
+          (changePlayHeadPos)="handleChangePlayHeadPos($event)"></timeline>
 <media-controls [playing]="isPlaying" 
                 (playingChange)="handlePlayPause($event)"
                 (forwards)="handleJump(true)"

@@ -70,5 +70,13 @@ export class ControlBarComponent implements OnInit {
     });
   }
 
+  /**
+   * Seeks to another point in the track.
+   * @param event state information
+   */
+  handleChangePlayHeadPos(event) {
+    this.playerService.seekTo((event.layerX / this.timelineWidth) * this.duration);
+  }
+
 
 }

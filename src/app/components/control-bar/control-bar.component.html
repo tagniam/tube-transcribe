@@ -1,3 +1,5 @@
 <timeline></timeline>
-<media-controls></media-controls>
+<media-controls [playing]="isPlaying" 
+                (playingChange)="handlePlayPause($event)">
+</media-controls>
 <time-display></time-display>

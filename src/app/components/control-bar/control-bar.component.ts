@@ -19,4 +19,18 @@ export class ControlBarComponent implements OnInit {
     });
   }
 
+  /**
+   * Plays/pauses the video.
+   * @param play true if video is to be played, paused otherwise
+   */
+  handlePlayPause(play) {
+    if (play) {
+      this.playerService.playVideo();
+    }
+
+    else {
+      this.playerService.pauseVideo();
+    }
+  }
+
 }

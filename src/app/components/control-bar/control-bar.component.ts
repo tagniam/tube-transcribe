@@ -8,14 +8,14 @@ import { PlayerStates } from '../../enum/player-states.enum';
   styleUrls: ['./control-bar.component.css']
 })
 export class ControlBarComponent implements OnInit {
-  private playerState: PlayerStates;
+  private isPlaying: boolean;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
     // Subscribe to player state
     this.playerService.getPlayerState().subscribe((state) => {
-      this.playerState = state;
+      this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING; 
     });
   }
 

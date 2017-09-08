@@ -9,8 +9,10 @@ import { PlayerStates } from '../../enum/player-states.enum';
 })
 export class ControlBarComponent implements OnInit {
   private isPlaying: boolean;
+  private currentTime: number = 0;
   // Constant for jumping forwards/backwards
   private readonly JUMP_SECONDS = 5;
+  private readonly CHECK_MS = 10;
 
   constructor(private playerService: PlayerService) { }
 
@@ -19,6 +21,13 @@ export class ControlBarComponent implements OnInit {
     this.playerService.getPlayerState().subscribe((state) => {
       this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING;
     });
+
+    // Update current time
+    setInterval(() => {
+      if (this.isPlaying) {
+        this.playerService.getCurrentTime().then(time => this.currentTime = time);
+      }
+    }, this.CHECK_MS);
   }
 
   /**

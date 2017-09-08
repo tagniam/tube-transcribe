@@ -12,6 +12,10 @@ export class ControlBarComponent implements OnInit {
   private currentTime: number = 0;
   private duration: number = 0;
 
+  private playHeadPos: number = 0;
+
+  private timelineWidth: number = screen.width;
+
   // Constant for jumping forwards/backwards
   private readonly JUMP_SECONDS = 5;
   private readonly CHECK_MS = 10;
@@ -28,6 +32,7 @@ export class ControlBarComponent implements OnInit {
     setInterval(() => {
       if (this.isPlaying) {
         this.playerService.getCurrentTime().then(time => this.currentTime = time);
+        this.playHeadPos = (this.currentTime / this.duration) * this.timelineWidth;
       }
     }, this.CHECK_MS);
 

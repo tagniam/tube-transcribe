@@ -1,5 +1,7 @@
 <timeline></timeline>
 <media-controls [playing]="isPlaying" 
-                (playingChange)="handlePlayPause($event)">
+                (playingChange)="handlePlayPause($event)"
+                (forwards)="handleJump(true)"
+                (backwards)="handleJump(false)">
 </media-controls>
 <time-display></time-display>

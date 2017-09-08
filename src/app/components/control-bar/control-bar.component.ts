@@ -9,13 +9,15 @@ import { PlayerStates } from '../../enum/player-states.enum';
 })
 export class ControlBarComponent implements OnInit {
   private isPlaying: boolean;
+  // Constant for jumping forwards/backwards
+  private readonly JUMP_SECONDS = 5;
 
   constructor(private playerService: PlayerService) { }
 
   ngOnInit() {
     // Subscribe to player state
     this.playerService.getPlayerState().subscribe((state) => {
-      this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING; 
+      this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING;
     });
   }
 
@@ -32,5 +34,22 @@ export class ControlBarComponent implements OnInit {
       this.playerService.pauseVideo();
     }
   }
+
+  /**
+   * Jumps forwards/backwards in the video by the constant JUMP_SECONDS.
+   * @param forwards true if jumping forwards, backwards otherwise
+   */
+  handleJump(forwards) {
+    this.playerService.getCurrentTime().then((currentTime) => {
+      if (forwards) {
+        this.playerService.seekTo(currentTime + this.JUMP_SECONDS);
+      }
+
+      else {
+        this.playerService.seekTo(currentTime - this.JUMP_SECONDS);
+      }
+    });
+  }
+
 
 }

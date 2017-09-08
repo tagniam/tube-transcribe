@@ -10,6 +10,8 @@ import { PlayerStates } from '../../enum/player-states.enum';
 export class ControlBarComponent implements OnInit {
   private isPlaying: boolean;
   private currentTime: number = 0;
+  private duration: number = 0;
+
   // Constant for jumping forwards/backwards
   private readonly JUMP_SECONDS = 5;
   private readonly CHECK_MS = 10;
@@ -28,6 +30,9 @@ export class ControlBarComponent implements OnInit {
         this.playerService.getCurrentTime().then(time => this.currentTime = time);
       }
     }, this.CHECK_MS);
+
+    // Save duration of track
+    this.playerService.getDuration().then(duration => this.duration = duration);
   }
 
   /**

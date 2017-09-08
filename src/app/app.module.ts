@@ -10,6 +10,7 @@ import { TimelineComponent } from './components/timeline/timeline.component';
 import { SelectionBoxComponent } from './components/timeline/selection-box/selection-box.component';
 import { TimeDisplayComponent } from './components/time-display/time-display.component';
 import { MediaControlsComponent } from './components/media-controls/media-controls.component';
+import { ControlBarComponent } from './components/control-bar/control-bar.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MediaControlsComponent } from './components/media-controls/media-contro
     TimelineComponent,
     SelectionBoxComponent,
     TimeDisplayComponent,
-    MediaControlsComponent
+    MediaControlsComponent,
+    ControlBarComponent
   ],
   imports: [
     BrowserModule,

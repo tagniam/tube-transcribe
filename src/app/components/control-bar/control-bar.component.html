@@ -1,4 +1,5 @@
-<timeline [width]="timelineWidth"
+<timeline [playing]="isPlaying"
+          [width]="timelineWidth"
           [playHeadPos]="playHeadPos"
           (changePlayHeadPos)="handleChangePlayHeadPos($event)"
           (selection)="handleSelection($event)"></timeline>

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, HostListener, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'timeline',
@@ -7,24 +7,41 @@ import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@a
 })
 
 export class TimelineComponent implements OnInit {
-  /* On player initialization, these values should be set. */
-  @Input() playHeadPos: number = 0;
+  get playHeadPos(): number {
+    return this._playHeadPos;
+  }
+
+  @Input() set playHeadPos(value: number) {
+    // Keep playhead in view while scrolling
+    this._playHeadPos = value;
+    if (this.playing) {
+      this.keepPlayheadInView();
+    }
+  }
+
   get width(): number {
     return this._width;
   }
 
   @Input() set width(value: number) {
     // Change selection start/end pos to fit new width
-    this.selectionStartPos = (this.selectionStartPos / this._width) * value;
-    this.selectionEndPos = (this.selectionEndPos / this._width) * value;
+    this.playHeadPos = (this.playHeadPos / this.width) * value;
+    this.selectionStartPos = (this.selectionStartPos / this.width) * value;
+    this.selectionEndPos = (this.selectionEndPos / this.width) * value;
     this._width = value;
   }
+
   @Input() height: number = screen.height/10;
-  private _width: number = screen.width;
+  @Input() playing: boolean = false;
 
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<any> = new EventEmitter();
   @Output() changePlayHeadPos: EventEmitter<Event> = new EventEmitter();
+
+  @ViewChild('timeline') timelineRef: ElementRef;
+
+  private _width: number = screen.width;
+  private _playHeadPos: number = 0;
 
   private selectionStartPos: number = 0;
   private selectionEndPos: number = 0;
@@ -34,7 +51,21 @@ export class TimelineComponent implements OnInit {
   }
 
   ngOnInit() {
-    // TODO implement
+  }
+
+  /**
+   * Scrolls the timeline div if the playhead goes out of bounds.
+   */
+  private keepPlayheadInView() {
+    let scrollPos = this.timelineRef.nativeElement.scrollLeft;
+    // Scroll right
+    if (this.playHeadPos > scrollPos + screen.width) {
+      this.timelineRef.nativeElement.scrollLeft += screen.width;
+    }
+    // Scroll left
+    else if (this.playHeadPos < scrollPos) {
+      this.timelineRef.nativeElement.scrollLeft = this.playHeadPos;
+    }
   }
 
   /**

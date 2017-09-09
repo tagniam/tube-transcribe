@@ -1,11 +1,11 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
-  selector: 'speed-control',
-  templateUrl: './speed-control.component.html',
-  styleUrls: ['./speed-control.component.css']
+  selector: 'playback-rate-control',
+  templateUrl: './playback-rate-control.component.html',
+  styleUrls: ['./playback-rate-control.component.css']
 })
-export class SpeedControlComponent implements OnInit {
+export class PlaybackRateControlComponent implements OnInit {
   @ViewChild('playbackRate') playbackInput: ElementRef;
 
   @Input() set playbackRates(rates: Array<number>) {

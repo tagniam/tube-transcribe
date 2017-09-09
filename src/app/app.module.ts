@@ -11,7 +11,7 @@ import { SelectionBoxComponent } from './components/control-bar/timeline/selecti
 import { TimeDisplayComponent } from './components/control-bar/time-display/time-display.component';
 import { MediaControlsComponent } from './components/control-bar/media-controls/media-controls.component';
 import { ControlBarComponent } from './components/control-bar/control-bar.component';
-import { SpeedControlComponent } from './components/control-bar/speed-control/speed-control.component';
+import { PlaybackRateControlComponent } from './components/control-bar/playback-rate-control/playback-rate-control.component';
 import { VolumeControlComponent } from './components/control-bar/volume-control/volume-control.component';
 import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom-control.component';
 
@@ -24,7 +24,7 @@ import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom
     TimeDisplayComponent,
     MediaControlsComponent,
     ControlBarComponent,
-    SpeedControlComponent,
+    PlaybackRateControlComponent,
     VolumeControlComponent,
     ZoomControlComponent
   ],

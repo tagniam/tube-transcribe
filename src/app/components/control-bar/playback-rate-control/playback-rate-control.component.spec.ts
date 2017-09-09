@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SpeedControlComponent } from './speed-control.component';
+import { PlaybackRateControlComponent } from './playback-rate-control.component';
 
 describe('SpeedControlComponent', () => {
-  let component: SpeedControlComponent;
-  let fixture: ComponentFixture<SpeedControlComponent>;
+  let component: PlaybackRateControlComponent;
+  let fixture: ComponentFixture<PlaybackRateControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SpeedControlComponent ]
+      declarations: [ PlaybackRateControlComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SpeedControlComponent);
+    fixture = TestBed.createComponent(PlaybackRateControlComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -9,3 +9,5 @@
 <time-display [currentTime]="currentTime"></time-display>
 
 <volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>
+<br>
+<speed-control [playbackRates]="playbackRates" (playbackRateChange)="handlePlaybackRateChange($event)"></speed-control>

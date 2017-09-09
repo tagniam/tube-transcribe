@@ -11,6 +11,7 @@ export class ControlBarComponent implements OnInit {
   private isPlaying: boolean;
   private currentTime: number = 0;
   private duration: number = 0;
+  private playbackRates: Array<number> = [1];
 
   private playHeadPos: number = 0;
 
@@ -38,6 +39,9 @@ export class ControlBarComponent implements OnInit {
 
     // Save duration of track
     this.playerService.getDuration().then(duration => this.duration = duration);
+
+    // Save playback rates
+    this.playerService.getAvailablePlaybackRates().then(rates => this.playbackRates = rates);
   }
 
   /**
@@ -103,6 +107,14 @@ export class ControlBarComponent implements OnInit {
    */
   handleVolumeChange(volume) {
     this.playerService.setVolume(volume);
+  }
+
+  /**
+   * Sets the playback rate of the player.
+   * @param rate new playback rate
+   */
+  handlePlaybackRateChange(rate) {
+    this.playerService.setPlaybackRate(rate);
   }
 
 }

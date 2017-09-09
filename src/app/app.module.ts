@@ -13,6 +13,7 @@ import { MediaControlsComponent } from './components/control-bar/media-controls/
 import { ControlBarComponent } from './components/control-bar/control-bar.component';
 import { SpeedControlComponent } from './components/control-bar/speed-control/speed-control.component';
 import { VolumeControlComponent } from './components/control-bar/volume-control/volume-control.component';
+import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom-control.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { VolumeControlComponent } from './components/control-bar/volume-control/
     MediaControlsComponent,
     ControlBarComponent,
     SpeedControlComponent,
-    VolumeControlComponent
+    VolumeControlComponent,
+    ZoomControlComponent
   ],
   imports: [
     BrowserModule,

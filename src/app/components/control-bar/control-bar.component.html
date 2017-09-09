@@ -1,4 +1,5 @@
-<timeline [playHeadPos]="playHeadPos"
+<timeline [width]="timelineWidth"
+          [playHeadPos]="playHeadPos"
           (changePlayHeadPos)="handleChangePlayHeadPos($event)"
           (selection)="handleSelection($event)"></timeline>
 <media-controls [playing]="isPlaying" 
@@ -11,3 +12,5 @@
 <volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>
 <br>
 <playback-rate-control [playbackRates]="playbackRates" (playbackRateChange)="handlePlaybackRateChange($event)"></playback-rate-control>
+<br>
+<zoom-control (zoomChange)="handleZoomChange($event)"></zoom-control>

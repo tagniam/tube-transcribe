@@ -117,4 +117,14 @@ export class ControlBarComponent implements OnInit {
     this.playerService.setPlaybackRate(rate);
   }
 
+  /**
+   * Changes the width of the timeline.
+   * @param zoomLevel zoom level, between 0 and 100
+   */
+  handleZoomChange(zoomLevel) {
+    // Zoom level step; may modify later
+    let step = (screen.width*(this.duration - 1))/100;
+    this.timelineWidth = screen.width + zoomLevel * step;
+  }
+
 }

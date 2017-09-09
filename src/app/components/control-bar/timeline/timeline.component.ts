@@ -9,8 +9,14 @@ import { Component, OnInit, HostListener, Input, Output, EventEmitter } from '@a
 export class TimelineComponent implements OnInit {
   /* On player initialization, these values should be set. */
   @Input() playHeadPos: number = 0;
-  @Input() width: number = screen.width;
+  @Input() set width(value: number) {
+    // Change selection start/end pos to fit new width
+    this.selectionStartPos = (this.selectionStartPos / this._width) * value;
+    this.selectionEndPos = (this.selectionEndPos / this._width) * value;
+    this._width = value;
+  }
   @Input() height: number = screen.height/10;
+  private _width: number = screen.width;
 
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<any> = new EventEmitter();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-volume-control',
+  selector: 'volume-control',
   templateUrl: './volume-control.component.html',
   styleUrls: ['./volume-control.component.css']
 })

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-speed-control',
+  selector: 'speed-control',
   templateUrl: './speed-control.component.html',
   styleUrls: ['./speed-control.component.css']
 })

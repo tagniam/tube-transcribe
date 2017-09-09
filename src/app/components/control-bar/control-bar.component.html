@@ -1,5 +1,6 @@
 <timeline [playHeadPos]="playHeadPos"
-          (changePlayHeadPos)="handleChangePlayHeadPos($event)"></timeline>
+          (changePlayHeadPos)="handleChangePlayHeadPos($event)"
+          (selection)="handleSelection($event)"></timeline>
 <media-controls [playing]="isPlaying" 
                 (playingChange)="handlePlayPause($event)"
                 (forwards)="handleJump(true)"

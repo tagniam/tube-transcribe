@@ -13,7 +13,7 @@ export class TimelineComponent implements OnInit {
   @Input() height: number = screen.height/10;
 
   /* Parent component will handle anything to do with the actual player. */
-  @Output() selection: EventEmitter<Event> = new EventEmitter();
+  @Output() selection: EventEmitter<any> = new EventEmitter();
   @Output() changePlayHeadPos: EventEmitter<Event> = new EventEmitter();
 
   private selectionStartPos: number = 0;
@@ -43,7 +43,7 @@ export class TimelineComponent implements OnInit {
   handleSelecting(event) {
     this.selectionEndPos = event.layerX;
     this.playHeadPos = event.layerX;
-    this.changePlayHeadPos.emit(event);
+    //this.changePlayHeadPos.emit(event);
   }
 
   /**
@@ -61,7 +61,8 @@ export class TimelineComponent implements OnInit {
    * @param event mouse event data
    */
   handleSelectionEnd(event) {
-    this.selection.emit(event);
+    this.selection.emit({selectionStartPos: this.selectionStartPos, 
+      selectionEndPos: this.selectionEndPos});
   }
 
   /**

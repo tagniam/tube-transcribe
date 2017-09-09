@@ -75,8 +75,26 @@ export class ControlBarComponent implements OnInit {
    * @param event state information
    */
   handleChangePlayHeadPos(event) {
+    this.playerService.endLoop();
     this.playerService.seekTo((event.layerX / this.timelineWidth) * this.duration);
   }
 
+  /**
+   * Starts a new loop in the track.
+   * @param event loop information
+   */
+  handleSelection(event) {
+    this.playerService.endLoop();
+    let loopStart = (event.selectionStartPos / this.timelineWidth) * this.duration;
+    let loopEnd = (event.selectionEndPos / this.timelineWidth) * this.duration;
+
+    if (loopStart > loopEnd) {
+      let temp = loopStart;
+      loopStart = loopEnd;
+      loopEnd = temp; 
+    }
+
+    this.playerService.startLoop(loopStart, loopEnd);
+  }
 
 }

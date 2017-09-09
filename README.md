@@ -6,5 +6,6 @@ Learn how to play your favourite tracks by slowing down and looping to your hear
 * No need for clunky desktop software
 * Slow down/speed up playback rates
 * Loop sections precisely (to the millisecond!)
-* Save specific time markers/sections to come back to challenging parts
+* Mark specific times/sections to come back to challenging parts
+* Save in-progress transcriptions
 * Quickly transcribe any YouTube video by changing [youtube.com]() to [tubetranscriber.com]() in the URL

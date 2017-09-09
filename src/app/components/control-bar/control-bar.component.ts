@@ -97,4 +97,12 @@ export class ControlBarComponent implements OnInit {
     this.playerService.startLoop(loopStart, loopEnd);
   }
 
+  /**
+   * Sets the volume of the player.
+   * @param volume new volume, between 0 and 100
+   */
+  handleVolumeChange(volume) {
+    this.playerService.setVolume(volume);
+  }
+
 }

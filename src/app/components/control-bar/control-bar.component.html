@@ -7,3 +7,5 @@
                 (backwards)="handleJump(false)">
 </media-controls>
 <time-display [currentTime]="currentTime"></time-display>
+
+<volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>

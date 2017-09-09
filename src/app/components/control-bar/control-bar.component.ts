@@ -123,7 +123,7 @@ export class ControlBarComponent implements OnInit {
    */
   handleZoomChange(zoomLevel) {
     // Zoom level step; may modify later
-    let step = (screen.width*(this.duration - 1))/100;
+    let step = (screen.width*(this.duration - 1))/300;
     this.timelineWidth = screen.width + zoomLevel * step;
   }
 

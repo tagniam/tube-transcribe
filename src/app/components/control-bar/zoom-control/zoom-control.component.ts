@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-zoom-control',
+  selector: 'zoom-control',
   templateUrl: './zoom-control.component.html',
   styleUrls: ['./zoom-control.component.css']
 })

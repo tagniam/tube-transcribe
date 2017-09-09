@@ -11,6 +11,8 @@ import { SelectionBoxComponent } from './components/control-bar/timeline/selecti
 import { TimeDisplayComponent } from './components/control-bar/time-display/time-display.component';
 import { MediaControlsComponent } from './components/control-bar/media-controls/media-controls.component';
 import { ControlBarComponent } from './components/control-bar/control-bar.component';
+import { SpeedControlComponent } from './components/control-bar/speed-control/speed-control.component';
+import { VolumeControlComponent } from './components/control-bar/volume-control/volume-control.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ControlBarComponent } from './components/control-bar/control-bar.compon
     SelectionBoxComponent,
     TimeDisplayComponent,
     MediaControlsComponent,
-    ControlBarComponent
+    ControlBarComponent,
+    SpeedControlComponent,
+    VolumeControlComponent
   ],
   imports: [
     BrowserModule,

@@ -43,7 +43,7 @@ export class TimelineComponent implements OnInit {
   handleSelecting(event) {
     this.selectionEndPos = event.layerX;
     this.playHeadPos = event.layerX;
-    //this.changePlayHeadPos.emit(event);
+    this.changePlayHeadPos.emit(event);
   }
 
   /**

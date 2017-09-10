@@ -5,10 +5,7 @@ const bodyParser = require('body-parser');
 const app = express();
 const port = 3000;
 
-// Set static folder (where angular 2 will reside)
 app.use(express.static(path.join(__dirname, 'public')));
-
-// Body parser middleware
 app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
@@ -17,4 +14,4 @@ app.get('/', (req, res) => {
 
 app.listen(port, () => {
    console.log('Listening on port ' + port);
-})
+});

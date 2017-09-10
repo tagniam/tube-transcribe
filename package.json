@@ -4,7 +4,12 @@
   "description": "YouTube music transcription tool",
   "main": "app.js",
   "scripts": {
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*"
   },
   "repository": {
     "type": "git",

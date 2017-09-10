@@ -1,0 +1,16 @@
+<div id="media-controls-wrapper">
+
+  <button id="backwards" (click)="handleBackwards()">Backwards</button>
+  
+  <button id="playPause" (click)="togglePlayPause()">
+    <div *ngIf="playing">
+      Pause
+    </div>
+    <div *ngIf="!playing">
+      Play
+    </div>
+  </button>
+
+  <button id="forwards" (click)="handleForwards()">Forwards</button>
+
+</div>

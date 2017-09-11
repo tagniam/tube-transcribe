@@ -168,7 +168,7 @@ export class PlayerService {
       // Keep track of id to clear loop later
       this.loopId = setInterval(() => {
         this.getCurrentTime().then(currentTime => {
-          if (currentTime >= endSeconds) {
+          if (currentTime >= endSeconds || currentTime < startSeconds) {
             this.seekTo(startSeconds);
           }
         }); 

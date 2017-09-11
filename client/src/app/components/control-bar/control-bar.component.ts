@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
 import { PlayerStates } from '../../enum/player-states.enum';
 
@@ -7,15 +7,16 @@ import { PlayerStates } from '../../enum/player-states.enum';
   templateUrl: './control-bar.component.html',
   styleUrls: ['./control-bar.component.css']
 })
-export class ControlBarComponent implements OnInit {
+export class ControlBarComponent implements OnInit, OnDestroy {
   private isPlaying: boolean;
   private currentTime: number = 0;
   private duration: number = 0;
   private playbackRates: Array<number> = [1];
 
   private playHeadPos: number = 0;
-
   private timelineWidth: number = screen.width;
+
+  private timeIntervalId;
 
   // Constant for jumping forwards/backwards
   private readonly JUMP_SECONDS = 5;
@@ -30,7 +31,7 @@ export class ControlBarComponent implements OnInit {
     });
 
     // Update current time
-    setInterval(() => {
+    this.timeIntervalId = setInterval(() => {
       if (this.isPlaying) {
         this.playerService.getCurrentTime().then(time => this.currentTime = time);
         this.playHeadPos = (this.currentTime / this.duration) * this.timelineWidth;
@@ -42,6 +43,11 @@ export class ControlBarComponent implements OnInit {
 
     // Save playback rates
     this.playerService.getAvailablePlaybackRates().then(rates => this.playbackRates = rates);
+  }
+
+  ngOnDestroy() {
+    this.playerService.endLoop();
+    clearInterval(this.timeIntervalId);
   }
 
   /**

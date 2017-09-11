@@ -70,13 +70,18 @@ export class ControlBarComponent implements OnInit, OnDestroy {
    */
   handleJump(forwards) {
     this.playerService.getCurrentTime().then((currentTime) => {
+      let jump = currentTime;
       if (forwards) {
-        this.playerService.seekTo(currentTime + this.JUMP_SECONDS);
+        jump += this.JUMP_SECONDS;
       }
 
       else {
-        this.playerService.seekTo(currentTime - this.JUMP_SECONDS);
+        jump -= this.JUMP_SECONDS;
       }
+
+      this.playerService.seekTo(jump).then(() => {
+        this.playerService.playVideo();
+      })
     });
   }
 

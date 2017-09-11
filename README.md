@@ -8,4 +8,4 @@ Learn how to play your favourite tracks by slowing down and looping to your hear
 * Loop sections precisely (to the millisecond!)
 * Mark specific times/sections to come back to challenging parts
 * Save in-progress transcriptions
-* Quickly transcribe any YouTube video by changing [youtube.com]() to [tubetranscriber.com]() in the URL
+* Quickly transcribe any YouTube video by changing [youtube.com]() to [tubetranscribe.com]() in the URL

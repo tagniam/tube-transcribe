@@ -1,4 +1,14 @@
-<input #playbackRate
-       type="range"
-       (input)="changePlaybackRate(playbackRate.value)"
-       min="1">
+<div class="row">
+    <div class="col-sm-2">
+        <span class="glyphicon glyphicon-step-forward"></span>
+    </div>
+    <div class="col-sm-8">
+        <input #playbackRate
+            type="range"
+            (input)="changePlaybackRate(playbackRate.value)"
+            min="1">
+    </div>
+    <div class="col-sm-2">
+        <span class="glyphicon glyphicon-fast-forward"></span>
+    </div>
+</div>

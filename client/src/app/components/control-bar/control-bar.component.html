@@ -3,15 +3,29 @@
           [playHeadPos]="playHeadPos"
           (changePlayHeadPos)="handleChangePlayHeadPos($event)"
           (selection)="handleSelection($event)"></timeline>
-<media-controls [playing]="isPlaying" 
+
+<div class="controls">
+    <div class="row">
+        <div class="col-lg-3">
+            <media-controls [playing]="isPlaying" 
                 (playingChange)="handlePlayPause($event)"
                 (forwards)="handleJump(true)"
                 (backwards)="handleJump(false)">
-</media-controls>
-<time-display [currentTime]="currentTime"></time-display>
+    </media-controls>
 
-<volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>
-<br>
-<playback-rate-control [playbackRates]="playbackRates" (playbackRateChange)="handlePlaybackRateChange($event)"></playback-rate-control>
-<br>
-<zoom-control (zoomChange)="handleZoomChange($event)"></zoom-control>
+        </div>
+        <div class="col-lg-6"></div>
+        <div class="col-lg-1">
+            <time-display [currentTime]="currentTime"></time-display>
+        </div>
+        <div class="col-lg-2">
+            <volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>
+            <playback-rate-control [playbackRates]="playbackRates" (playbackRateChange)="handlePlaybackRateChange($event)"></playback-rate-control>
+            <zoom-control (zoomChange)="handleZoomChange($event)"></zoom-control>
+        </div>
+
+    </div>
+
+
+
+</div>

@@ -1,7 +1,18 @@
-<input #zoom
-       type="range"
-       (input)="changeZoom(zoom.value)"
-       min="0"
-       max="50"
-       value="0"
-       step="5">
+<div class="row">
+    <div class="col-sm-2">
+        <span class="glyphicon glyphicon-zoom-out"></span>
+    </div>
+    <div class="col-sm-8">
+        <input #zoom
+            type="range"
+            (input)="changeZoom(zoom.value)"
+            min="0"
+            max="50"
+            value="0"
+            step="5">
+
+    </div>
+    <div class="col-sm-2">
+        <span class="glyphicon glyphicon-zoom-in"></span>
+    </div>
+</div>

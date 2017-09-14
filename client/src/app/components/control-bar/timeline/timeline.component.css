@@ -3,10 +3,6 @@
     overflow-x: scroll;
 }
 
-#timeline-box {
-    overflow-x: scroll;
-}
-
 /* Just sets any svgs we have to be undraggable */
 svg {
     user-select: none;
@@ -18,11 +14,11 @@ svg {
 
 /* Playhead style */
 #playhead {
-    stroke: #29D698;
+    stroke: #8C8C8C;
     stroke-width:2;
 }
 
 /* Timeline background style */
 #timeline-bg {
-    fill: #3A3A3A;
+    fill: #1F1F1F;
 }

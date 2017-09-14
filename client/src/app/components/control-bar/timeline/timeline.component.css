@@ -1,6 +1,6 @@
 /* Makes scrollbars visible */
 #timeline-wrapper {
-    overflow-x: scroll;
+    overflow-x: hidden;
 }
 
 /* Just sets any svgs we have to be undraggable */

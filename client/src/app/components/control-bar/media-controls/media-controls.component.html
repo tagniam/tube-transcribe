@@ -1,10 +1,10 @@
 <div id="media-controls-wrapper">
   <div class="btn-group" role="group">
-    <button id="backwards" class="btn btn-lg btn-secondary" (click)="handleBackwards()">
+    <button id="backwards" class="btn btn-secondary" (click)="handleBackwards()">
       <i class="glyphicon glyphicon-backward"></i>
     </button>
 
-    <button id="playPause" class="btn btn-lg btn-danger" (click)="togglePlayPause()">
+    <button id="playPause" class="btn btn-secondary" (click)="togglePlayPause()">
       <div *ngIf="playing">
         <i class="glyphicon glyphicon-pause"></i>
       </div>
@@ -12,7 +12,7 @@
         <i class="glyphicon glyphicon-play"></i>
       </div>
     </button>
-    <button id="forwards" class="btn btn-lg btn-secondary" (click)="handleForwards()">
+    <button id="forwards" class="btn btn-secondary" (click)="handleForwards()">
       <i class="glyphicon glyphicon-forward"></i>
     </button>
   </div>

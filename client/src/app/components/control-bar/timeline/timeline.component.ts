@@ -31,7 +31,7 @@ export class TimelineComponent implements OnInit {
     this._width = value;
   }
 
-  @Input() height: number = screen.height/10;
+  @Input() height: number = 50;
   @Input() playing: boolean = false;
 
   /* Parent component will handle anything to do with the actual player. */

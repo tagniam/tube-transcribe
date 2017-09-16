@@ -1,4 +1,5 @@
 import { Component, OnInit, HostListener, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
+import { PerfectScrollbarDirective } from 'ngx-perfect-scrollbar';
 
 @Component({
   selector: 'timeline',
@@ -7,6 +8,8 @@ import { Component, OnInit, HostListener, Input, Output, EventEmitter, ViewChild
 })
 
 export class TimelineComponent implements OnInit {
+  @ViewChild(PerfectScrollbarDirective) scrollbar: PerfectScrollbarDirective;
+
   get playHeadPos(): number {
     return this._playHeadPos;
   }
@@ -57,14 +60,10 @@ export class TimelineComponent implements OnInit {
    * Scrolls the timeline div if the playhead goes out of bounds.
    */
   private keepPlayheadInView() {
-    let scrollPos = this.timelineRef.nativeElement.scrollLeft;
-    // Scroll right
-    if (this.playHeadPos > scrollPos + screen.width) {
-      this.timelineRef.nativeElement.scrollLeft += screen.width;
-    }
-    // Scroll left
-    else if (this.playHeadPos < scrollPos) {
-      this.timelineRef.nativeElement.scrollLeft = this.playHeadPos;
+    let scrollPos = this.scrollbar.geometry().x;
+    if (this.playHeadPos > scrollPos + screen.width || 
+        this.playHeadPos < scrollPos) {
+      this.scrollbar.scrollToX(this.playHeadPos);
     }
   }
 

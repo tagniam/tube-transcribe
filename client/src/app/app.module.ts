@@ -14,6 +14,8 @@ import { ControlBarComponent } from './components/control-bar/control-bar.compon
 import { PlaybackRateControlComponent } from './components/control-bar/playback-rate-control/playback-rate-control.component';
 import { VolumeControlComponent } from './components/control-bar/volume-control/volume-control.component';
 import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom-control.component';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    PerfectScrollbarModule.forRoot()
   ],
   providers: [PlayerService],
   bootstrap: [AppComponent]

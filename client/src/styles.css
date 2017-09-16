@@ -7,3 +7,16 @@
 .icon {
     color: white;
 }
+
+/* Styling for input ranges (firefox only for now)
+ * this link looks helpful for cross-browser styling:
+ * http://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html
+ */
+input[type=range]::-moz-focus-outer {
+    border: 0;
+}
+
+input[type=range]::-moz-range-track {
+    background: #000;
+    border: none;
+}

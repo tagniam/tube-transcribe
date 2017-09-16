@@ -12,7 +12,7 @@
             <div class="col-lg-1">
                 <time-display [currentTime]="currentTime"></time-display>
             </div>
-            <div class="col-lg-2">
+            <div class="sliders col-lg-2">
                 <volume-control (volumeChange)="handleVolumeChange($event)"></volume-control>
                 <playback-rate-control [playbackRates]="playbackRates" (playbackRateChange)="handlePlaybackRateChange($event)"></playback-rate-control>
                 <zoom-control (zoomChange)="handleZoomChange($event)"></zoom-control>

@@ -4,7 +4,7 @@
       <i class="glyphicon glyphicon-backward"></i>
     </button>
 
-    <button [attr.title]="playing ? 'Pause' : 'Play'" id="playPause" class="btn btn-secondary" (click)="togglePlayPause()">
+    <button [attr.title]="playing ? 'Pause' : 'Play'" id="playPause" class="btn btn-warning" (click)="togglePlayPause()">
       <div *ngIf="playing">
         <i class="glyphicon glyphicon-pause"></i>
       </div>

@@ -28,6 +28,7 @@ export class TimelineComponent implements OnInit {
 
   @Input() set width(value: number) {
     // Change selection start/end pos to fit new width
+    this.scrollbar.update();
     this.playHeadPos = (this.playHeadPos / this.width) * value;
     this.selectionStartPos = (this.selectionStartPos / this.width) * value;
     this.selectionEndPos = (this.selectionEndPos / this.width) * value;

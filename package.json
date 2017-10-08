@@ -1,15 +1,54 @@
 {
   "name": "tube-transcribe",
   "version": "1.0.0",
+  "author": "J.R. Maingat",
   "description": "YouTube music transcription tool",
-  "main": "app.js",
   "scripts": {
-    "start": "node app",
+    "ng": "ng",
+    "build": "ng build",
+    "start": "node server/app.js",
+    "dev": "concurrently \"ng serve -pc proxy.conf.json --open\" \"nodemon server/app.js\"",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/forms": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@angular/router": "^4.0.0",
+    "bootstrap-sass": "^3.3.7",
+    "core-js": "^2.4.1",
+    "ng2-bootstrap": "^1.6.3",
+    "ngx-perfect-scrollbar": "^4.6.2",
+    "rxjs": "^5.1.0",
+    "youtube-player": "^5.4.0",
+    "zone.js": "^0.8.4",
+
     "express": "*",
-    "body-parser": "*"
+    "body-parser": "*",
+    "concurrently": "*"
+  },
+  "devDependencies": {
+    "@angular/cli": "1.0.4",
+    "@angular/compiler-cli": "^4.0.0",
+    "@types/jasmine": "2.5.38",
+    "@types/node": "~6.0.60",
+    "codelyzer": "~2.0.0",
+    "jasmine-core": "~2.5.2",
+    "jasmine-spec-reporter": "~3.2.0",
+    "karma": "~1.4.1",
+    "karma-chrome-launcher": "~2.1.1",
+    "karma-cli": "~1.0.1",
+    "karma-jasmine": "~1.1.0",
+    "karma-jasmine-html-reporter": "^0.2.2",
+    "karma-coverage-istanbul-reporter": "^0.2.0",
+    "protractor": "~5.1.0",
+    "ts-node": "~2.0.0",
+    "tslint": "~4.5.0",
+    "typescript": "~2.2.0"
   },
   "repository": {
     "type": "git",
@@ -21,7 +60,6 @@
     "webapp",
     "youtube"
   ],
-  "author": "J.R. Maingat",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/tagniam/tube-transcribe/issues"

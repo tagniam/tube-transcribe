@@ -10,7 +10,8 @@
                 <media-controls [playing]="isPlaying" 
                     (playingChange)="handlePlayPause($event)"
                     (forwards)="handleJump(true)"
-                    (backwards)="handleJump(false)">
+                    (backwards)="handleJump(false)"
+                    (saveMarker)="handleSaveMarker($event)">
                 </media-controls>
             </div>
             <div class="col-lg-3"></div>

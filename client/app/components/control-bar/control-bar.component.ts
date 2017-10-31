@@ -138,4 +138,15 @@ export class ControlBarComponent implements OnInit, OnDestroy {
     this.timelineWidth = screen.width + zoomLevel * step;
   }
 
+  /**
+   * Saves the current time stamp.
+   * @param event 
+   */
+  handleSaveMarker(event) {
+    // Currently just prints out time, need a service to save time stamp soon
+    this.playerService.getCurrentTime().then(currentTime => {
+      console.log(currentTime);
+    });
+  }
+
 }

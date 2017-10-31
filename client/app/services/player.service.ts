@@ -185,4 +185,11 @@ export class PlayerService {
     }
   }
 
+  /**
+   * Returns the current youtube video id.
+   */
+  getVideoId(): string {
+    return this.videoId;
+  }
+
 }

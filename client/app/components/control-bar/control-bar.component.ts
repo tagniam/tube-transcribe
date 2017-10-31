@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
+import { UserService } from '../../services/user.service';
 import { PlayerStates } from '../../enum/player-states.enum';
 
 @Component({
@@ -22,7 +23,7 @@ export class ControlBarComponent implements OnInit, OnDestroy {
   private readonly JUMP_SECONDS = 5;
   private readonly CHECK_MS = 10;
 
-  constructor(private playerService: PlayerService) { }
+  constructor(private playerService: PlayerService, private userService: UserService) { }
 
   ngOnInit() {
     // Subscribe to player state
@@ -143,9 +144,8 @@ export class ControlBarComponent implements OnInit, OnDestroy {
    * @param event 
    */
   handleSaveMarker(event) {
-    // Currently just prints out time, need a service to save time stamp soon
     this.playerService.getCurrentTime().then(currentTime => {
-      console.log(currentTime);
+      this.userService.saveMarker(this.playerService.getVideoId(), currentTime);
     });
   }
 

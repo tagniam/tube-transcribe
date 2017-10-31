@@ -13,6 +13,7 @@ export class MediaControlsComponent implements OnInit {
 
   @Output() forwards: EventEmitter<any> = new EventEmitter();
   @Output() backwards: EventEmitter<any> = new EventEmitter();
+  @Output() saveMarker: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -39,6 +40,13 @@ export class MediaControlsComponent implements OnInit {
    */
   handleBackwards(): void {
     this.backwards.emit();
+  }
+
+  /**
+   * Save the current selection. (loop or time)
+   */
+  handleSaveMarker(): void {
+    this.saveMarker.emit();
   }
 
 }

@@ -1,9 +1,19 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 const app = express();
 const port = 3000;
+
+mongoose.connect('mongodb://localhost/tubetranscribe', {useMongoClient: true});
+
+mongoose.connection.on('connected', () => {
+    console.log('Connected to database mongodb://localhost:27017/tubetranscribe');
+});
+mongoose.connection.on('error', (err) => {
+    console.log('Database error: ' + err);
+});
 
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.json());

@@ -29,7 +29,8 @@
 
     "express": "*",
     "body-parser": "*",
-    "concurrently": "*"
+    "concurrently": "*",
+    "mongoose": "*"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

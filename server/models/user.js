@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
     password: { type: String, required: true },
     transcriptions: [{
         videoId: { type: String },
-        marker: { type: [number] }
+        marker: { type: [Number] }
     }]
 });
 

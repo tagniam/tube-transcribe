@@ -16,10 +16,21 @@ svg {
 #playhead {
     /*stroke: #8C8C8C;*/
     stroke: red;
-    stroke-width: 2px;
+    stroke-width: 3px;
+}
+
+/* Hoverhead style */
+#hoverhead {
+    stroke: #8C8C8C;
+    stroke-width: 3px;
 }
 
 /* Timeline background style */
 #timeline-bg {
     fill: #1F1F1F;
+}
+
+/* Timeline background style */
+#elapsed-box {
+    fill: #303030;
 }

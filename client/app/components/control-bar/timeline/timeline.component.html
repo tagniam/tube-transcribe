@@ -6,14 +6,27 @@
                  (dblclicked)="handleDoubleClick($event)"
                  (selectionStart)="handleSelectionStart($event)"
                  (selecting)="handleSelecting($event)"
-                 (selectionEnd)="handleSelectionEnd($event)" >
+                 (selectionEnd)="handleSelectionEnd($event)"
+                 (mouseenter)="handleEnter($event)"
+                 (mouseleave)="handleLeave($event)"
+                 (mousemove)="handleMove($event)">
 
     <svg:rect id="timeline-bg" x="0" y="0" height="100%" width="100%" />
+    <svg:rect id="elapsed-box" x="0" y="0" height="100%" [attr.width]="playHeadPos" />
 
     <ng-template [ngIf]="isSelecting">
       <svg:g selection-box [selectionStartPos]="selectionStartPos" 
                            [selectionEndPos]="selectionEndPos"/>
     </ng-template>
+
+    <ng-template [ngIf]="isHovering">
+     <svg:line id="hoverhead"
+               [attr.x1]="hoverPos"
+               y1="0"
+               [attr.x2]="hoverPos"
+               y2="100%" />
+    </ng-template>
+
 
     <svg:line id="playhead" 
               [attr.x1]="playHeadPos" 

@@ -43,3 +43,16 @@ module.exports.saveVideo = function(user, videoId, callback) {
     user.transcriptions.push({ videoId: videoId });
     user.save(callback);
 }
+
+module.exports.updateVideoMarkers = function(user, videoId, markers, callback) {
+    // Search for video and update markers
+    for (var i = 0; i < user.transcriptions.length; i++) {
+        if (user.transcriptions[i].videoId == videoId) {
+            user.transcriptions[i].markers = markers; 
+            break;
+        }
+    }
+    // TODO handle when video not found
+
+    user.save(callback);
+}

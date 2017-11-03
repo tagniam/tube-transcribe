@@ -14,8 +14,9 @@ svg {
 
 /* Playhead style */
 #playhead {
-    stroke: #8C8C8C;
-    stroke-width: 3px;
+    /*stroke: #8C8C8C;*/
+    stroke: red;
+    stroke-width: 2px;
 }
 
 /* Timeline background style */

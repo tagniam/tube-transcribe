@@ -16,8 +16,8 @@ module.exports.getUserById = function(id, callback) {
     User.findById(id, callback);
 }
 
-module.exports.getUserByEmail = function(username, callback) {
-    const query = { username: username };
+module.exports.getUserByEmail = function(email, callback) {
+    const query = { email: email };
     User.findOne(query, callback);
 }
 
@@ -36,4 +36,10 @@ module.exports.comparePassword = function(candidatePassword, hash, callback) {
         if (err) throw err;
         callback(null, isMatch);
     });
+}
+
+module.exports.saveVideo = function(user, videoId, callback) {
+    // TODO ensure no duplicates
+    user.transcriptions.push({ videoId: videoId });
+    user.save(callback);
 }

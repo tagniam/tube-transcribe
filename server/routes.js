@@ -17,4 +17,20 @@ router.post('/register', (req, res, next) => {
     });
 });
 
+// Add video
+router.post('/save-video', (req, res, next) => {
+    const email = req.body.email;
+    const videoId = req.body.videoId;
+
+    User.getUserByEmail(email, (err, user) => {
+        if (err) throw err;
+        if (!user) return res.json({ success: false, msg: 'User not found' });
+
+        User.saveVideo(user, videoId, (err, user) => {
+            if (err) return res.json({ success: false, msg: '' + err });
+            return res.json({ success: true, msg: 'Video saved' });
+        })
+    });
+});
+
 module.exports = router;

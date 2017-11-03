@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require('./models/user');
 
+// Register
 router.post('/register', (req, res, next) => {
     let newUser = new User({
         email: req.body.email,
@@ -16,9 +17,9 @@ router.post('/register', (req, res, next) => {
         }
 
         else {
-            res.json({ success: true, msg: 'User registered\n' + newUser });
+            res.json({ success: true, msg: 'User registered' });
         }
-    })
+    });
 });
 
 module.exports = router;

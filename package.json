@@ -30,7 +30,8 @@
     "express": "*",
     "body-parser": "*",
     "concurrently": "*",
-    "mongoose": "*"
+    "mongoose": "*",
+    "bcryptjs": "*"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

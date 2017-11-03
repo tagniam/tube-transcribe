@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema({
     email: { type: String, required: true },
@@ -21,6 +22,18 @@ module.exports.getUserByUsername = function(username, callback) {
 }
 
 module.exports.addUser = function(newUser, callback) {
-    // TODO encrypt user password
-    newUser.save(callback);
+    bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hashedPassword) => {
+            if (err) throw err;
+            newUser.password = hashedPassword;
+            newUser.save(callback);
+        });
+    });
+}
+
+module.exports.comparePassword = function(candidatePassword, hash, callback) {
+    bcrypt.compare(candidatePassword, hash, (err, isMatch)=> {
+        if (err) throw err;
+        callback(null, isMatch);
+    });
 }

@@ -12,7 +12,9 @@
                  (mousemove)="handleMove($event)">
 
     <svg:rect id="timeline-bg" x="0" y="0" height="100%" width="100%" />
-    <svg:rect id="elapsed-box" x="0" y="0" height="100%" [attr.width]="playHeadPos" />
+    <ng-template [ngIf]="!isSelecting">
+      <svg:rect id="elapsed-box" x="0" y="0" height="100%" [attr.width]="playHeadPos" />
+    </ng-template>
 
     <ng-template [ngIf]="isSelecting">
       <svg:g selection-box [selectionStartPos]="selectionStartPos" 

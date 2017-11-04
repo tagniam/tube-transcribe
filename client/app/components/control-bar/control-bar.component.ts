@@ -91,7 +91,6 @@ export class ControlBarComponent implements OnInit, OnDestroy {
    * @param event state information
    */
   handleChangePlayHeadPos(event) {
-    this.playerService.endLoop();
     this.playerService.seekTo((event.layerX / this.timelineWidth) * this.duration);
   }
 
@@ -111,6 +110,13 @@ export class ControlBarComponent implements OnInit, OnDestroy {
     }
 
     this.playerService.startLoop(loopStart, loopEnd);
+  }
+
+  /**
+   * Ends the loop.
+   */
+  handleEndSelection() {
+    this.playerService.endLoop();
   }
 
   /**

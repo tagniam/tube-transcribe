@@ -18,8 +18,8 @@ router.post('/user', (req, res, next) => {
 });
 
 // Get profile
-router.get('/user', (req, res, next) => {
-    User.getUserByEmail(req.body.email, (err, user) => {
+router.get('/user/:id', (req, res, next) => {
+    User.getUserById(req.params.id, (err, user) => {
         if (err) throw err;
         if (!user) return res.json({ success: false, msg: 'Failed to find user' });
         user.password = undefined;

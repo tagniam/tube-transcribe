@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -16,6 +17,7 @@ mongoose.connection.on('error', (err) => {
     console.log('Database error: ' + err);
 });
 
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.json());
 app.use('/api', routes);

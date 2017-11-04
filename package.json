@@ -31,7 +31,8 @@
     "body-parser": "*",
     "concurrently": "*",
     "mongoose": "*",
-    "bcryptjs": "*"
+    "bcryptjs": "*",
+    "cors": "*"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

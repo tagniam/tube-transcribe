@@ -10,7 +10,7 @@ import { Component, OnInit, Input } from '@angular/core';
  * Component to display the current video time in mm:ss:ms.
  */
 export class TimeDisplayComponent implements OnInit {
-  private time: String = '00:00:00';
+  private time: String = '00:00.00';
 
   /**
    * Sets the time whenever the time changes.
@@ -38,7 +38,7 @@ export class TimeDisplayComponent implements OnInit {
     if (m.length < 2) m = "0" + m;
     if (ms.length < 2) ms = "0" + ms;
 
-    return m + ":" + s + ":" + ms.slice(0, 2); 
+    return m + ":" + s + "." + ms.slice(0, 2); 
   }
 
 }

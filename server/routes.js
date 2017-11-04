@@ -27,4 +27,14 @@ router.get('/profile', (req, res, next) => {
     });
 });
 
+// Update profile
+router.put('/profile', (req, res, next) => {
+    const user = req.body.user;
+    User.updateUser(user, (err) => {
+        if (err) throw err;
+        return res.json({ success: true, msg: 'Updated user' });
+    });
+
+});
+
 module.exports = router;

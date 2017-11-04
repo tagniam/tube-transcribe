@@ -23,7 +23,7 @@ router.get('/user/:id', (req, res, next) => {
         if (err) throw err;
         if (!user) return res.json({ success: false, msg: 'Failed to find user' });
         user.password = undefined;
-        return res.json({ success: true, user: user });
+        return res.json(user);
     });
 });
 

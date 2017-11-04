@@ -50,6 +50,8 @@ export class TimelineComponent implements OnInit {
   private selectionStartPos: number = 0;
   private selectionEndPos: number = 0;
   private isSelecting: boolean = false;
+  private isHovering: boolean = false;
+  private hoverPos: number = 0;
 
   constructor() {
   }
@@ -120,4 +122,27 @@ export class TimelineComponent implements OnInit {
     // TODO: handle
   }
 
+  /**
+   * Executes on mouse enter.
+   * @param event mouse event data
+   */
+  handleEnter(event) {
+    this.isHovering = true;
+  }
+
+  /**
+   * Executes on mouse move.
+   * @param event mouse event data
+   */
+  handleMove(event) {
+    if (this.isHovering) this.hoverPos = event.layerX;
+  }
+
+  /**
+   * Executes on mouse leave.
+   * @param event mouse event data
+   */
+  handleLeave(event) {
+    this.isHovering = false;
+  }
 }

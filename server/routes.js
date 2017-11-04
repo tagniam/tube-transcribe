@@ -29,7 +29,7 @@ router.get('/user/:id', (req, res, next) => {
 
 // Update profile
 router.put('/user', (req, res, next) => {
-    const user = req.body.user;
+    const user = req.body;
     User.updateUser(user, (err) => {
         if (err) throw err;
         return res.json({ success: true, msg: 'Updated user' });

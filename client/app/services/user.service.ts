@@ -15,6 +15,11 @@ export class UserService {
         return this.http.get(`http://localhost:3000/api/user/${user._id}`).map(res => res.json());
     }
 
+    updateUser(user): Observable<any> {
+        return this.http.put('http://localhost:3000/api/user', JSON.stringify(user), this.options);
+    }
+
+
     /**
      * Saves a time marker to the database.
      * @param videoId string id of the youtube video id

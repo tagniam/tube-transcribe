@@ -144,9 +144,10 @@ export class ControlBarComponent implements OnInit, OnDestroy {
    * @param event 
    */
   handleSaveMarker(event) {
-    this.userService.getUser({ _id: '59fccd23c51ecb16ba68227d' }).subscribe(obj => {
-      console.log(obj);
-    });
+    /* this.userService.getUser({ _id: '59fccd23c51ecb16ba68227d' }).subscribe(obj => {
+      obj.user.transcriptions[0].markers.push(6);
+      this.userService.updateUser(obj.user).subscribe(obj => console.log(obj));
+    });*/
 
     this.playerService.getCurrentTime().then(currentTime => {
       this.userService.saveMarker(this.playerService.getVideoId(), currentTime);

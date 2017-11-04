@@ -40,6 +40,7 @@ export class TimelineComponent implements OnInit {
 
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<any> = new EventEmitter();
+  @Output() endSelection: EventEmitter<any> = new EventEmitter();
   @Output() changePlayHeadPos: EventEmitter<Event> = new EventEmitter();
 
   @ViewChild('timeline') timelineRef: ElementRef;
@@ -77,6 +78,7 @@ export class TimelineComponent implements OnInit {
     this.isSelecting = false;
     this.selectionEndPos = 0;
     this.selectionStartPos = 0;
+    this.endSelection.emit();
   }
 
   /**
@@ -113,7 +115,12 @@ export class TimelineComponent implements OnInit {
    * @param event mouse event data
    */
   handleClick(event) {
-    this.resetSelection();
+    // Reset selection only if seeking outside selection box
+    if (this.isSelecting && (event.layerX < this.selectionStartPos ||
+      event.layerX > this.selectionEndPos)) { 
+        this.resetSelection();
+    }
+
     this.playHeadPos = event.layerX;
     this.changePlayHeadPos.emit(event);
   }

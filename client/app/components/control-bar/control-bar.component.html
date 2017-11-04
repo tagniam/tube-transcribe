@@ -30,5 +30,6 @@
             [width]="timelineWidth"
             [playHeadPos]="playHeadPos"
             (changePlayHeadPos)="handleChangePlayHeadPos($event)"
-            (selection)="handleSelection($event)"></timeline>
+            (selection)="handleSelection($event)"
+            (endSelection)="handleEndSelection()"></timeline>
 </div>

@@ -30,12 +30,11 @@ export class ControlBarComponent implements OnInit, OnDestroy {
       this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING;
     });
 
-    // Update current time and timeline width
+    // Update current time
     this.timeIntervalId = setInterval(() => {
       if (this.isPlaying) {
         this.playerService.getCurrentTime().then(time => this.currentTime = time);
         this.playHeadPos = (this.currentTime / this.duration) * this.timelineWidth;
-        this.timelineWidth = screen.width;
       }
     }, this.CHECK_MS);
 

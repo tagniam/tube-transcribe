@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from './services/player.service';
 
 @Component({
@@ -8,14 +9,20 @@ import { PlayerService } from './services/player.service';
 })
 export class AppComponent implements OnInit {
   // Placeholder video
-  private videoId = 'br190bnPOLY';
+  private videoId;
 
-  constructor(private playerService: PlayerService) {
+  constructor(private playerService: PlayerService,
+              private route: ActivatedRoute,
+              private router: Router) {
 
   }
 
   ngOnInit() {
-    this.playerService.setup('youtube-player', this.videoId);
+    this.route.queryParams.subscribe(params => {
+      // Default video is Josh Turner's Sorry, Banjo
+      this.videoId = params['v'] || 'br190bnPOLY';
+      this.playerService.setup('youtube-player', this.videoId);
+    });
   }
 
 }

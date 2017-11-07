@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PlayerService } from './services/player.service';
@@ -18,6 +19,7 @@ import { ZoomControlComponent } from './components/control-bar/zoom-control/zoom
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
 import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +33,18 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
     VolumeControlComponent,
     ZoomControlComponent
   ],
+  exports: [
+    AppComponent,
+    TrackMouseDirective,
+    TimelineComponent,
+    SelectionBoxComponent,
+    TimeDisplayComponent,
+    MediaControlsComponent,
+    ControlBarComponent,
+    PlaybackRateControlComponent,
+    VolumeControlComponent,
+    ZoomControlComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -41,3 +55,7 @@ import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export const appRoutes: Routes = [
+  { path: 'watch', component: AppComponent }
+];

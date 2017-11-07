@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PlayerService } from './services/player.service';
 
 @Component({
@@ -7,15 +8,21 @@ import { PlayerService } from './services/player.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Placeholder video
-  private videoId = 'br190bnPOLY';
-
-  constructor(private playerService: PlayerService) {
-
-  }
+  constructor(private playerService: PlayerService,
+              private route: ActivatedRoute,
+              private router: Router) { }
 
   ngOnInit() {
-    this.playerService.setup('youtube-player', this.videoId);
+    this.route.queryParams.subscribe(params => {
+      let videoId = params['v'];
+      // Reroute to home page if no video id given
+      if (videoId == undefined) {
+        this.router.navigateByUrl('');
+      }
+      else {
+        this.playerService.setup('youtube-player', videoId);
+      }
+    });
   }
 
 }

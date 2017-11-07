@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PlayerService } from '../../services/player.service';
-import { UserService } from '../../services/user.service';
+import { UserService } from '../../../core/services/user.service';
 import { PlayerStates } from '../../enum/player-states.enum';
 
 @Component({

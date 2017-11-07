@@ -6,7 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { PlayerService } from './services/player.service';
-import { UserService } from './services/user.service';
+import { UserService } from '../core/services/user.service';
 import { TrackMouseDirective } from './directives/track-mouse.directive';
 import { TimelineComponent } from './components/control-bar/timeline/timeline.component';
 import { SelectionBoxComponent } from './components/control-bar/timeline/selection-box/selection-box.component';

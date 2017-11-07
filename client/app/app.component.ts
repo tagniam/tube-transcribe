@@ -8,20 +8,20 @@ import { PlayerService } from './services/player.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  // Placeholder video
-  private videoId;
-
   constructor(private playerService: PlayerService,
               private route: ActivatedRoute,
-              private router: Router) {
-
-  }
+              private router: Router) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      // Default video is Josh Turner's Sorry, Banjo
-      this.videoId = params['v'] || 'br190bnPOLY';
-      this.playerService.setup('youtube-player', this.videoId);
+      let videoId = params['v'];
+      // Reroute to home page if no video id given
+      if (videoId == undefined) {
+        this.router.navigateByUrl('');
+      }
+      else {
+        this.playerService.setup('youtube-player', videoId);
+      }
     });
   }
 

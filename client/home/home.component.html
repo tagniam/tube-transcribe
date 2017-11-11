@@ -30,7 +30,16 @@
     <div class="container">
     <h1>TubeTranscribe</h1>
     <p>Learn your music, without the fuss.</p>
-    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="input-group">
+            <input #ytURL type="text" class="form-control" placeholder="Enter a YouTube video URL...">
+            <span class="input-group-btn">
+                <button class="btn btn-primary" type="button" (click)="handleURLSubmit()">Go!</button>
+            </span>
+            </div>
+        </div>
+        </div>
     </div>
 </div>
 

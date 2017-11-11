@@ -19,6 +19,10 @@ export class HomeComponent implements OnInit {
     if (params['v']) {
       this.router.navigateByUrl('watch?v=' + params['v']);
     }
+
+    else {
+      alert('Sorry, that\'s an invalid URL.');
+    }
   }
 
   parseQueryString(queryString) {

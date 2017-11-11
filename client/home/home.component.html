@@ -33,7 +33,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div class="input-group">
-            <input #ytURL type="text" class="form-control" placeholder="Enter a YouTube video URL...">
+            <input #ytURL type="text" (keyup.enter)="handleURLSubmit()" class="form-control" placeholder="Enter a YouTube video URL...">
             <span class="input-group-btn">
                 <button class="btn btn-primary" type="button" (click)="handleURLSubmit()">Go!</button>
             </span>

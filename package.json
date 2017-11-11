@@ -31,7 +31,10 @@
     "youtube-player": "^5.4.0",
     "mongoose": "*",
     "bcryptjs": "*",
-    "cors": "*"
+    "cors": "*",
+    "jsonwebtoken": "*",
+    "passport": "*",
+    "passport-jwt": "*"
   },
   "devDependencies": {
     "@angular/cli": "1.0.4",

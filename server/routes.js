@@ -32,11 +32,11 @@ router.post('/login', (req, res, next) => {
             if (err) throw err;
             if (isMatch) {
                 // Expires in 1 week
-                const token = jwt.sign(user.toJSON(), 'mysecret', { expiresIn: 604800 });
                 user.password = undefined;
+                const token = jwt.sign({ user: user }, 'mysecret', { expiresIn: 604800 });
                 return res.json({
                     success: true,
-                    token: 'JWT '+token,
+                    token: token,
                     user: user
                 });
             }

@@ -38,6 +38,8 @@ export class TimelineComponent implements OnInit {
   @Input() height: number = 75;
   @Input() playing: boolean = false;
 
+  @Input() markers: Array<Number> = [];
+
   /* Parent component will handle anything to do with the actual player. */
   @Output() selection: EventEmitter<any> = new EventEmitter();
   @Output() endSelection: EventEmitter<any> = new EventEmitter();

@@ -19,6 +19,8 @@ export class ControlBarComponent implements OnInit, OnDestroy {
 
   private timeIntervalId;
 
+  private markers;
+
   // Constant for jumping forwards/backwards
   private readonly JUMP_SECONDS = 5;
   private readonly CHECK_MS = 10;
@@ -29,6 +31,12 @@ export class ControlBarComponent implements OnInit, OnDestroy {
     // Subscribe to player state
     this.playerService.getPlayerState().subscribe((state) => {
       this.isPlaying = state == PlayerStates.PLAYING || state == PlayerStates.BUFFERING;
+    });
+
+    // Subscribe to marker updates
+    this.userService.getMarkers(this.playerService.getVideoId()).subscribe(markers => {
+      // Save each marker as a % of track length
+      this.markers = markers;
     });
 
     // Update current time

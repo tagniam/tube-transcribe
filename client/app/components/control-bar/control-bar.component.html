@@ -29,6 +29,7 @@
 <div class="timeline">
     <timeline [playing]="isPlaying"
             [width]="timelineWidth"
+            [markers]="markers"
             [playHeadPos]="playHeadPos"
             (changePlayHeadPos)="handleChangePlayHeadPos($event)"
             (selection)="handleSelection($event)"

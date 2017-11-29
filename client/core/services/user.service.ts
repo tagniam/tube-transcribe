@@ -44,6 +44,9 @@ export class UserService {
      * @param videoId id of the video to observe
      */
     getMarkers(videoId: string): Observable<Array<Number>> {
+        if (!this.markers[videoId]) {
+            this.markers[videoId] = new BehaviorSubject<Array<Number>>([]);
+        }
         return this.markers[videoId].asObservable();        
     }
 }

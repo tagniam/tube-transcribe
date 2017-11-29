@@ -9,6 +9,9 @@ export class UserService {
     private headers = new Headers({ 'Content-Type': 'application/json', 'charset': 'UTF-8' });
     private options = new RequestOptions({ headers: this.headers });
 
+    // Hashmap to store local videos and markers
+    private markers = {};
+
     constructor(private http: Http) { }
 
     getUser(user): Observable<any> {
@@ -26,7 +29,11 @@ export class UserService {
      * @param timeStamp time in seconds of marker
      */
     saveMarker(videoId: string, timeStamp: number) {
-        // Mock service, print for now
-        console.log('Timestamp saved at ' + timeStamp + 's with video id ' + videoId);
+        // Mock service, save it locally
+        if (!this.markers[videoId]) {
+           this.markers[videoId] = [];
+        }
+        this.markers[videoId].push(timeStamp);
+        this.markers[videoId].sort();
     }
 }

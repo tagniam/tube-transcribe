@@ -164,7 +164,8 @@ export class ControlBarComponent implements OnInit, OnDestroy {
     });*/
 
     this.playerService.getCurrentTime().then(currentTime => {
-      this.userService.saveMarker(this.playerService.getVideoId(), currentTime);
+      let marker = currentTime / this.duration;
+      this.userService.saveMarker(this.playerService.getVideoId(), marker);
     });
   }
 

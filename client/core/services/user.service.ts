@@ -26,15 +26,15 @@ export class UserService {
     /**
      * Saves a time marker to the database.
      * @param videoId string id of the youtube video id
-     * @param timeStamp time in seconds of marker
+     * @param timeStamp percentage of track where marker is
      */
-    saveMarker(videoId: string, timeStamp: number) {
+    saveMarker(videoId: string, marker: number) {
         // Mock service, save it locally
         if (!this.markers[videoId]) {
            this.markers[videoId] = new BehaviorSubject<Array<Number>>([]);
         }
         let temp = this.markers[videoId].getValue();
-        temp.push(timeStamp);
+        temp.push(marker);
         temp.sort();
         this.markers[videoId].next(temp);
     }

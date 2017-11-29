@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, RequestOptions } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import 'rxjs/add/operator/map';
 
 @Injectable()
@@ -22,7 +23,6 @@ export class UserService {
         return this.http.put('http://localhost:3000/api/user', JSON.stringify(user), this.options);
     }
 
-
     /**
      * Saves a time marker to the database.
      * @param videoId string id of the youtube video id
@@ -31,9 +31,19 @@ export class UserService {
     saveMarker(videoId: string, timeStamp: number) {
         // Mock service, save it locally
         if (!this.markers[videoId]) {
-           this.markers[videoId] = [];
+           this.markers[videoId] = new BehaviorSubject<Array<Number>>([]);
         }
-        this.markers[videoId].push(timeStamp);
-        this.markers[videoId].sort();
+        let temp = this.markers[videoId].getValue();
+        temp.push(timeStamp);
+        temp.sort();
+        this.markers[videoId].next(temp);
+    }
+
+    /**
+     * Returns the list of markers for a specific local video.
+     * @param videoId id of the video to observe
+     */
+    getMarkers(videoId: string): Observable<Array<Number>> {
+        return this.markers[videoId].asObservable();        
     }
 }

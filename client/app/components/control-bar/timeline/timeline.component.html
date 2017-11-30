@@ -29,6 +29,13 @@
                y2="100%" />
     </ng-template>
 
+    <svg:line *ngFor="let marker of markers; let i = index"
+               id="marker"
+               [attr.x1]="marker + '%'"
+               y1="0"
+               [attr.x2]="marker + '%'"
+               y2="100%" />
+
 
     <svg:line id="playhead" 
               [attr.x1]="playHeadPos" 

@@ -25,6 +25,11 @@ svg {
     stroke-width: 3px;
 }
 
+#marker {
+    stroke: blue;
+    stroke-width: 3px;
+}
+
 /* Timeline background style */
 #timeline-bg {
     fill: #1F1F1F;
